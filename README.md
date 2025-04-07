@@ -4,7 +4,6 @@ Utilium is a lightweight utility library of reusable logic and algorithms for ev
 
 ## 📁 Project Structure
 
-## 📁 Project Structure
 
 - `README.md` – Project overview and usage instructions  
 - `LICENSE` – License information  
