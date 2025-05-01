@@ -1,0 +1,24 @@
+# frozen_string_literal: true
+
+# Rakefile
+
+require 'rake'
+require 'rspec/core/rake_task'
+require 'rake/clean'
+
+CLEAN.include('coverage', 'tmp', '*.log')
+
+desc 'Run all specs'
+RSpec::Core::RakeTask.new(:spec)
+
+task default: :spec
+
+desc 'Run RuboCop to lint code'
+task :lint do
+  sh 'bundle exec rubocop'
+end
+
+desc 'Run specs with code coverage'
+task :coverage do
+  sh 'COVERAGE=true bundle exec rspec'
+end

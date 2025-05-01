@@ -1,5 +1,7 @@
 # Utilium
 
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+
 Utilium is a lightweight utility library of reusable logic and algorithms for everyday development tasks. Built for clarity, speed, and reusability.
 
 ## 📁 Project Structure
@@ -47,3 +49,14 @@ Utilium is a lightweight utility library of reusable logic and algorithms for ev
   - `python/`  
   - `javascript/`  
   - `go/`  
+
+
+## 👤 Author
+
+**Jason Maglangit**  
+[GitHub](https://github.com/jasonmaglangit) • [LinkedIn](https://www.linkedin.com/in/jasonmaglangit/)
+
+
+## 📄 License
+
+This project is licensed under the [MIT License](./LICENSE).

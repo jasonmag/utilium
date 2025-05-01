@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+require 'optparse'
+require_relative '../lib/client_finder'
+
+options = {
+  file: 'clients.json',
+  field: 'full_name'
+}
+
+parser = OptionParser.new do |opts|
+  opts.banner = "Usage: client_finder [search|duplicates] [options] [query]"
+
+  opts.on('--file=FILE', 'Path to the JSON file') do |file|
+    options[:file] = file
+  end
+
+  opts.on('--field=FIELD', 'Field to search (for search command)') do |field|
+    options[:field] = field
+  end
+end
+
+command = ARGV.shift
+parser.parse!
+
+store = ClientFinder::ClientStore.load_from_file(options[:file])
+search = ClientFinder::SearchService.new(store)
+
+case command
+when 'search'
+  query = ARGV.join(" ")
+  results = search.by_field(options[:field], query)
+  puts results.empty? ? "No matches found." : JSON.pretty_generate(results.map(&:to_h))
+
+when 'duplicates'
+  results = search.duplicate_emails
+  puts results.empty? ? "No duplicate emails found." : JSON.pretty_generate(results.map(&:to_h))
+
+else
+  puts parser
+end
